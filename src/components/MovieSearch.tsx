@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { fetchMovies } from "../utils/api";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import Lottie from "lottie-react";
-import loadingAnimation from "../assets/loading.json";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { debounce } from "lodash";
 
@@ -42,7 +40,7 @@ const MovieSearch: React.FC<MovieSearchProps> = ({ isDarkMode }) => {
       debouncedSearch(query, currentPage);
     }
     return () => debouncedSearch.cancel(); // Cleanup
-  }, [query, currentPage]);
+  }, [query, currentPage, hasSearched, debouncedSearch]);
 
   // Handle search
   const handleSearch = async (page = 1) => {
